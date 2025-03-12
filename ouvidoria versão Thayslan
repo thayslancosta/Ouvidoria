@@ -1,0 +1,76 @@
+listaManifestacoes = []
+
+while True:
+    
+    #print Menu
+    print('Bem-vindo à Ouvidoria UniFacisa.')
+    print('Digite as opções à seguir para saber mais:')
+    print("Opções: \n1) Listagem de Manifestações. \n2) Criar uma nova Manifestação. \n3) Exibir quantidade de manifestações. \n4) Pesquisar uma manifestação por código. \n5) Sair do Sistema. ")
+    
+    try:
+        opcao = int(input("Digite sua opção: "))
+    except ValueError:
+        print("Erro! Digite um número válido.")
+        continue
+
+    #Listar Manifestações
+    if opcao == 1:
+        if len(listaManifestacoes) > 0:
+            print("Aqui você verá a listagem de manifestações.")
+            print("Lista de Manifestações:")
+
+            for listagem in listaManifestacoes:
+                print("-", listagem)
+        else:
+            print("Não há manifestações cadastradas")
+    
+    #criar nova Manifestação e informar código
+    elif opcao == 2:
+        
+        while True:
+            novaManifestacao = input("Digite sua Manifestação: ")
+
+            if len(novaManifestacao) == 0:
+                print("Erro! Digite novamente!")
+            else:
+                break
+        
+        listaManifestacoes.append(novaManifestacao)
+        #código a ser informado ao user
+        codigo = len(listaManifestacoes)
+        print(f"Manifestação adicionada com sucesso! Seu código é {codigo}")
+
+    #Exibir quantidade de Manifestações
+    elif opcao == 3:
+        
+        quantidadeManifestacoes = len(listaManifestacoes)
+        print(f"A quantidade de manifestações é de {quantidadeManifestacoes}")
+    
+    #Pesquisar manifestação por código
+    elif opcao == 4:
+
+        if len(listaManifestacoes) == 0:
+            print("Não há manifestações cadastradas!")
+            continue
+        
+        while True:
+            
+            try:
+                codigoUser = int(input("Informe o seu código: "))
+                codigoUser = codigoUser - 1
+            
+                if 0 <= codigoUser < len(listaManifestacoes):
+                    print(f"Manifestação encontrada: {listaManifestacoes[codigoUser]}")
+                    break
+                else:
+                    print("Código inválido! Informe um número válido.")
+            except ValueError:
+                print("Erro! Informe um número válido!")
+
+    #Sair do menu
+    elif opcao == 5:
+        print ("Obrigado pela preferência!")
+        break
+
+    
+

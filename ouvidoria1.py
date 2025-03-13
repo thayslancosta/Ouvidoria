@@ -26,17 +26,20 @@ while opcao !=5:
 
 
     elif opcao == 2:
-        print('Crie sua manifestação abaixo')
+        
         while True:
-            manifest = input('Digite sua crítica: ').strip()
-            if len(manifest) < 8:
-                print('Digite uma reclamação válida')
+            novaManifestacao = input("Digite sua Manifestação: ")
+
+            if len(novaManifestacao) == 0:
+                print("Erro! Digite novamente!")
             else:
                 break
-        listamanifest.append(manifest)
-        print('Sua manifestação foi lançada à Ouvidoria. Verifique se está na lista digitando 1.')
-        print()
-
+        
+        listaManifestacoes.append(novaManifestacao)
+        #código a ser informado ao user
+        codigo = len(listaManifestacoes)
+        print(f"Manifestação adicionada com sucesso! Seu código é {codigo}")
+   
     elif opcao == 3:
         codmanifest = len(listamanifest)
         print(int(codmanifest),'manifestação(ões) até agora.')
